@@ -1,0 +1,22 @@
+{{define "genreAdd"}}
+<html>
+    <head>
+        <title>Add Genre</title>
+        {{template "buttonStyles" .}}
+    </head>
+    <body>
+        {{template "header" .}}
+        <h2>Add Genre</h2>
+        <p>Use the form below to add a new genre into the catalog.</p>
+        <form action="/genres/add" method="POST">
+            <fieldset>
+                <legend>Genre Details</legend>
+                <label for="Name">Genre:</label>
+                <input type="text" id="Name" name="name">
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+        {{template "footer" .}}
+    </body>
+</html>
+{{end}}

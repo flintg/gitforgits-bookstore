@@ -1,0 +1,36 @@
+{{define "mainContent"}}
+<div class="content">
+    <section class="featured">
+        <h2>Featured Books</h2>
+        {{range .FeaturedBooks}}
+            <div class="book">
+                <img src="{{.ImageURL}}" alt="{{.Title}}">
+                <h3>{{.Title}}</h3>
+                <p>By {{.Author}}</p>
+            </div>
+        {{end}}
+    </section>
+
+    <section class="bestsellers">
+        <h2>Bestsellers</h2>
+        {{range .BestsellingBooks}}
+            <div class="book">
+                <img src="{{.ImageURL}}" alt="{{.Title}}">
+                <h3>{{.Title}}</h3>
+                <p>By {{.Author}}</p>
+            </div>
+        {{end}}
+    </section>
+
+    <section class="recommendations">
+        <h2>User Recommendations</h2>
+        {{range .UserRecommended}}
+            <div class="book">
+                <img src="{{.ImageURL}}" alt="{{.Title}}">
+                <h3>{{.Title}}</h3>
+                <p>By {{.Author}}</p>
+            </div>
+        {{end}}
+    </section>
+</div>
+{{end}}

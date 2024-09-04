@@ -1,0 +1,35 @@
+{{define "bookAdd"}}
+<html>
+    <head>
+        <title>Add Book</title>
+        {{template "buttonStyles" .}}
+    </head>
+    <body>
+        {{template "header" .}}
+        <h2>Add Book</h2>
+        <p>Use the form below to add a new book into the catalog.</p>
+        <form action="/books/add" method="POST">
+            <fieldset>
+                <legend>Book Details</legend>
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="title"><br>
+                <label for="Author">Author:</label>
+                <input type="text" id="Author" name="author"><br>
+                <label for="Description">Description:</label>
+                <textarea rows="10" cols="50" id="Description" name="description"></textarea><br>
+                <label for="ISBN">ISBN:</label>
+                <input type="text" id="ISBN" name="isbn"><br>
+                <label for="Genre">Genre:</label>
+                <select id="Genre" name="genre">
+                    <option value="0">Choose a genre ...</option>
+                    {{range .}}
+                    <option value="{{.ID}}">{{.Name}}</option>
+                    {{end}}
+                </select>
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+        {{template "footer" .}}
+    </body>
+</html>
+{{end}}

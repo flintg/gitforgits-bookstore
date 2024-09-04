@@ -1,0 +1,32 @@
+{{define "bookList"}}
+<html>
+    <head>
+        <title>All Books</title>
+        {{template "buttonStyles" .}}
+    </head>
+    <body>
+        {{template "header" .}}
+        <table width="75%">
+            <tr>
+                <th align="left">Title</th>
+                <th align="left">Author</th>
+                <th align="left">Description</th>
+                <th align="left">ISBN</th>
+                <th align="left">Genre</th>
+                <th align="right">Price</th>
+            </tr>
+            {{range .}}
+            <tr>
+                <td>{{if .ID}}<a href="/books/{{.ID}}">{{end}}{{if .Title}}{{.Title}}{{else}}(missing){{end}}</a></td>
+                <td>{{if .Author}}{{.Author}}{{else}}No author.{{end}}</td>
+                <td>{{if .Description}}{{.Description}}{{else}}No description provided.{{end}}</td>
+                <td>{{if .ISBN}}{{.ISBN}}{{else}}###-#-###-#####-#{{end}}</td>
+                <td>{{if .Genre}}{{.Genre}}{{end}}</td>
+                <td align="right">{{if .Price}}{{.Price}}{{else}}-0.01{{end}}</td>
+            </tr>
+            {{end}}
+        </table>
+        {{template "footer" .}}
+</body>
+</html>
+{{end}}

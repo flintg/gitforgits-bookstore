@@ -1,0 +1,33 @@
+{{define "genreList"}}
+<html>
+    <head>
+        <title>All Genres</title>
+        {{template "buttonStyles" .}}
+    </head>
+    <body>
+        {{template "header" .}}
+        <table width="75%">
+            <tr>
+                <th align="left">Genre</th>
+                <th align="left">Actions</th>
+            </tr>{{range .}}
+            <tr>
+                <td>{{if .ID}}<a href="/books/?genre={{.ID}}">{{end}}{{if .Name}}{{.Name}}{{else}}(missing){{end}}</a></td>
+                <td valign="middle">
+                    {{if .ID}}<form action="/genres/{{.ID}}/delete" method="POST" {{if .ID}}id="genre.{{.ID}}"{{end}}>
+                        <button type="submit" class="btn">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>{{end}}
+                </td>
+            </tr>{{end}}
+        </table>
+        <form action="/genres/add" method="GET">
+            <button type="submit" class="btn">
+                <i class="fa fa-plus"></i> Add
+            </button>
+        </form>
+        {{template "footer" .}}
+    </body>
+</html>
+{{end}}
